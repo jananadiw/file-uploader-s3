@@ -27,7 +27,7 @@ $ npm run start:prod
 ```bash
 #REQUEST 
 METHOD: POST
-URI: /fileupload
+ENDPOINT: /fileupload
 BODY: form-data
 KEY: upload
 VALUE: select a file (.jpg, .png .jpeg)
