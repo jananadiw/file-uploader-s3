@@ -24,16 +24,16 @@ $ npm run start:prod
 ```
 ## Test file upload with Postman
 
-REQUEST 
-
+```bash
+#REQUEST 
 METHOD: POST
 URI: /fileupload
 BODY: form-data
 KEY: upload
 VALUE: select a file (.jpg, .png .jpeg)
 
-RESPONSE
+#RESPONSE
 File url
-
+```
 
 
