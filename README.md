@@ -1,6 +1,6 @@
 
 
-## File-Uploader-Nest-S3
+## File Upload to AWS S3
 
 > Backend Service to upload files/images to a AWS S3 bucket.
 
