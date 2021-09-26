@@ -3,9 +3,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ImageModule } from './image/image.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { SqlConfigModule } from './config/database/config.module';
+import { SqlConfigService } from './config/database/config.service';
 
+import { Image } from './image/entity/image.entity';
 @Module({
-  imports: [ImageModule, TypeOrmModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ImageModule,
+    TypeOrmModule.forRootAsync({
+      imports: [SqlConfigModule],
+      useClass: SqlConfigService,
+      inject: [SqlConfigService],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

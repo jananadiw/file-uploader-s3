@@ -1,4 +1,7 @@
 import { Req, Res, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ImageRepository } from './entity/image.repository';
+import { Image } from './entity/image.entity';
 import * as multer from 'multer';
 import * as AWS from 'aws-sdk';
 import * as multerS3 from 'multer-s3';
@@ -14,6 +17,15 @@ AWS.config.update({
 
 @Injectable()
 export class ImageService {
+  constructor(
+    @InjectRepository(Image)
+    private imageRepository: ImageRepository,
+  ) {}
+
+  findAll(): Promise<Image[]> {
+    return this.imageRepository.find();
+  }
+  // s3 upload service
   async fileupload(@Req() req, @Res() res) {
     try {
       this.upload(req, res, function (error) {
