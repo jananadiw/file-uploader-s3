@@ -46,8 +46,8 @@ export class ImageService {
       s3: s3,
       bucket: AWS_S3_BUCKET_NAME,
       acl: 'private',
-      key: function (request, file, cb) {
-        cb(null, `${Date.now().toString()} - ${file.originalname}`);
+      metadata: (req, file, cb) => {
+        cb(null, { fieldName: file.fieldname });
       },
     }),
   }).array('upload', 1);
