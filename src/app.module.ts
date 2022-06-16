@@ -7,7 +7,6 @@ import { ConfigModule } from '@nestjs/config';
 import { SqlConfigModule } from './config/database/config.module';
 import { SqlConfigService } from './config/database/config.service';
 
-import { Image } from './image/entity/image.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
