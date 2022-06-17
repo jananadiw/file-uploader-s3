@@ -1,8 +1,9 @@
-import { Controller, Post, Get, Req, Res } from '@nestjs/common';
-import { ImageService } from './image.service';
+import { Controller, Post, Get, Body } from '@nestjs/common';
+import { ImageService } from '../image/image.service';
 import { ImageResponseDTO } from '../image/image.dto';
+import { images } from '../image/entity/image.entity';
 
-@Controller('fileupload')
+@Controller('images')
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
@@ -11,14 +12,17 @@ export class ImageController {
     return await this.imageService.findAll();
   }
 
+  @Get()
+  async getImage(id: number): Promise<ImageResponseDTO> {
+    return await this.imageService.getOneById(id);
+  }
+
   @Post()
-  async create(@Req() request, @Res() response) {
+  async create(@Body() body: images): Promise<ImageResponseDTO> {
     try {
-      await this.imageService.fileupload(request, response);
+      await this.imageService.add(body);
     } catch (error) {
-      return response
-        .status(500)
-        .json(`Failed to upload image file: ${error.message}`);
+      return error;
     }
   }
 }
