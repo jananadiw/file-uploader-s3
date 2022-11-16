@@ -1,8 +1,12 @@
 
 
-## File Upload to AWS S3
+## Image File Uploader
 
-> Backend Service to upload files/images to a AWS S3 bucket.
+> Backend of Canvas Confetti Admin. upload files/images to a AWS S3 bucket.
+
+## Features
+> Upload an image to AWS S3 bucket while saving the url and image information to a database table.
+
 
 ## Installation
 
@@ -22,18 +26,8 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-## Test file upload with Postman
-
-```bash
-#REQUEST 
-METHOD: POST
-ENDPOINT: /fileupload
-BODY: form-data
-KEY: upload
-VALUE: select a file (.jpg, .png .jpeg)
-
-#RESPONSE
-File url
-```
+## Test with Postman
+<img src="./img/getAllImages.png" width="600" alt="Get All Images">
+<img src="./img/postImage.png" width="600" alt="Post an Image">
 
 
